@@ -2,6 +2,7 @@
   --dark: #131313;
   --dark-accent: #1f1f1f;
   --light-accent: #bb85f8;
+  --light-accent-hover: #a557ff;
   --light: #e0e0e0;
 }
 
@@ -37,6 +38,74 @@ header {
 header button {
   padding: 0.75rem 1rem;
   border: none;
+  font-size: 1rem;
   border-radius: 10px;
   background-color: var(--light-accent);
+  cursor: pointer;
+  transition: 0.4s background-color;
+}
+
+header button:hover {
+  background-color: var(--light-accent-hover);
+}
+
+main {
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--dark-accent);
+  margin-right: 3rem;
+  margin-bottom: 3rem;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.144);
+}
+
+.card img {
+  height: 1rem;
+  width: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: 0.3s background-color;
+}
+
+.card img:hover {
+  background-color: var(--dark);
+}
+
+.container1 {
+  align-self: center;
+  justify-self: center;
+  margin: 1.5rem 2rem 2.125rem;
+}
+
+.container1 h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.container1 p {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  justify-self: flex-end;
+}
+
+.container2 p {
+  text-transform: capitalize;
+  font-size: 1rem;
 }

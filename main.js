@@ -14,6 +14,9 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 myLibrary.push(theHobbit);
 
+const theHobbit2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
+myLibrary.push(theHobbit2);
+
 function addBookToLibrary() {}
 
 const displayLibrary = () => {
@@ -23,24 +26,61 @@ const displayLibrary = () => {
 };
 
 const displayBook = (book) => {
+  /* model for book card
+    <card>
+        <div>
+            <bookTitle>
+            <bookAuthor>
+        </div>
+        <div>
+            <read>
+            <pages>
+        </div>
+    </card>
+*/
+
+  // creating html elements
   const card = document.createElement("div");
-  const bookTitle = document.createElement("h3");
+
+  const x = document.createElement("img");
+  x.src = "img/x2.svg";
+
+  const container1 = document.createElement("div");
+  const bookTitle = document.createElement("h2");
   const bookAuthor = document.createElement("p");
+
+  const container2 = document.createElement("div");
   const read = document.createElement("p");
   const pages = document.createElement("p");
 
+  // add classes to elements
+  card.classList.add("card");
+  container1.classList.add("container1");
+  bookTitle.classList.add("book-title");
+  bookAuthor.classList.add("book-author");
+  container2.classList.add("container2");
+  read.classList.add("read");
+  pages.classList.add("pages");
+
+  // adding inner html
   bookTitle.innerHTML = book.title;
   bookAuthor.innerHTML = book.author;
-  pages.innerHTML = `${book.pages} pages`;
+  pages.innerHTML = book.pages;
 
   if (book.read === true) read.innerHTML = "already read";
-  else read.innerHTML = "not read yet";
+  else read.innerHTML = "not read";
 
-  card.appendChild(bookTitle);
-  card.appendChild(bookAuthor);
-  card.appendChild(read);
-  card.appendChild(pages);
+  // adding elements to their parent node
+  container1.appendChild(bookTitle);
+  container1.appendChild(bookAuthor);
+  container2.appendChild(read);
+  container2.appendChild(pages);
 
+  card.appendChild(x);
+  card.appendChild(container1);
+  card.appendChild(container2);
+
+  // dispaly the card
   bookList.appendChild(card);
 };
 
