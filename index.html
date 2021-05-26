@@ -16,6 +16,39 @@
 
     <main>
       <section id="book-list" class="book-list container"></section>
+
+      <section id="add-book-modal" class="add-book-modal">
+        <div class="modal-container">
+          <h2>Add a new book</h2>
+          <form>
+            <input type="text" placeholder="Title" />
+            <input type="text" placeholder="Author" />
+            <input type="text" placeholder="Number of pages" />
+            <p>Have you read it yet?</p>
+            <div class="radio-container">
+              <label for="yes">Yes</label>
+              <input
+                type="radio"
+                id="yes"
+                name="read"
+                value="yes"
+                class="radio-button"
+              />
+            </div>
+            <div class="radio-container">
+              <label for="no">No</label>
+              <input
+                type="radio"
+                id="no"
+                name="read"
+                value="no"
+                class="radio-button"
+              />
+            </div>
+            <input class="submit" type="submit" />
+          </form>
+        </div>
+      </section>
     </main>
 
     <script src="main.js"></script>
