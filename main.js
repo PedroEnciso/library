@@ -1,5 +1,8 @@
 // get document elements
 const bookList = document.getElementById("book-list");
+const addBookModal = document.getElementById("add-book-modal");
+const addBookButton = document.getElementById("add-book");
+const modalX = document.getElementById("modal-x");
 
 // main library to display
 let myLibrary = [];
@@ -17,7 +20,9 @@ myLibrary.push(theHobbit);
 const theHobbit2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 myLibrary.push(theHobbit2);
 
-function addBookToLibrary() {}
+const addBook = () => {
+  addBookModal.style.visibility = "visible";
+};
 
 const displayLibrary = () => {
   for (let i = 0; i < myLibrary.length; i++) {
@@ -84,4 +89,12 @@ const displayBook = (book) => {
   bookList.appendChild(card);
 };
 
+const exitModal = () => {
+  addBookModal.style.visibility = "hidden";
+};
+
 displayLibrary();
+
+// eventlisteners
+addBookButton.addEventListener("click", () => addBook());
+modalX.addEventListener("click", () => exitModal());
