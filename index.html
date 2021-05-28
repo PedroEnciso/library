@@ -22,29 +22,46 @@
           <img id="modal-x" class="modal-x" src="./img/x2.svg" alt="clear" />
           <h2>Add a new book</h2>
           <form>
-            <input type="text" placeholder="Title" />
-            <input type="text" placeholder="Author" />
-            <input type="text" placeholder="Number of pages" />
-            <p>Have you read it yet?</p>
-            <div class="radio-container">
-              <label for="yes">Yes</label>
-              <input
-                type="radio"
-                id="yes"
-                name="read"
-                value="yes"
-                class="radio-button"
-              />
+            <div class="input-container">
+              <label for="title">Title</label>
+              <input id="title" type="text" />
             </div>
-            <div class="radio-container">
-              <label for="no">No</label>
-              <input
-                type="radio"
-                id="no"
-                name="read"
-                value="no"
-                class="radio-button"
-              />
+
+            <div class="input-container">
+              <label for="author">Author</label>
+              <input id="author" type="text" />
+            </div>
+
+            <div class="input-container">
+              <label for="pages"># of pages</label>
+              <input class="number-input" id="pages" type="number" min="1" />
+            </div>
+
+            <div class="radio-prompt">
+              <p>Have you read it yet?</p>
+              <div class="radio-buttons">
+                <div class="radio-container first-radio-button">
+                  <label for="yes">Yes</label>
+                  <input
+                    type="radio"
+                    id="yes"
+                    name="read"
+                    value="yes"
+                    class="radio-button"
+                  />
+                </div>
+                <div class="radio-container">
+                  <label for="no">No</label>
+                  <input
+                    type="radio"
+                    id="no"
+                    name="read"
+                    value="no"
+                    class="radio-button"
+                    checked="checked"
+                  />
+                </div>
+              </div>
             </div>
             <input class="submit" type="submit" />
           </form>

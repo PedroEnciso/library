@@ -148,45 +148,83 @@ main {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1.5rem;
+  color: var(--light-accent);
 }
 
-.modal-container input {
-  display: block;
-  width: 70%;
+.input-container {
+  width: 80%;
   margin: 0 auto;
-  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.input-container label,
+.radio-prompt p {
+  color: var(--light-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.input-container input {
+  display: block;
+  width: 55%;
   border: none;
   height: 2rem;
   border-radius: 10px;
   padding-left: 1rem;
   font-size: 1rem;
-  background-color: var(--light-accent);
+  background-color: var(--light);
   color: #111;
 }
 
-.modal-container input::placeholder {
-  color: #111;
+.number-input {
+  width: 25% !important;
 }
 
-.modal-container p {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+.radio-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.radio-prompt p {
+  line-height: 1.5rem;
 }
 
 .radio-container {
-  width: 100px;
-  margin: 0 auto;
+  width: auto;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .radio-button {
-  display: inline-block !important;
-  height: 1rem !important;
+  margin-left: 1rem;
+  padding: 0px;
+}
+
+.first-radio-button {
+  margin-bottom: 0.75rem;
 }
 
 .submit {
-  padding-left: 0px !important;
-  margin-top: 1rem !important;
+  display: block;
+  width: 55%;
+  margin: 3rem auto 0rem;
+  border: none;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: var(--light-accent);
+  color: #111;
+  cursor: pointer;
+  transition: 0.4s background-color;
+}
+
+.submit:hover {
+  background-color: var(--light-accent-hover);
 }
