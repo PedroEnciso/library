@@ -189,7 +189,5 @@ submit.addEventListener("click", getFormData);
 
 // main library to display
 let myLibrary = [];
-const theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 295, false);
-myLibrary.push(theHobbit);
 displayLocalStorage();
 displayLibrary();
