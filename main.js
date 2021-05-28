@@ -11,18 +11,12 @@ const radioNo = document.getElementById("no");
 const submitButton = document.getElementById("submit");
 const incompleteMessage = document.getElementById("incomplete-message");
 
-// main library to display
-let myLibrary = [];
-
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
-
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-myLibrary.push(theHobbit);
 
 const addBook = () => {
   addBookModal.style.visibility = "visible";
@@ -33,7 +27,6 @@ const displayLibrary = () => {
   for (let i = 0; i < myLibrary.length; i++) {
     displayBook(myLibrary[i]);
   }
-  createAddBookBox();
 };
 
 const displayBook = (book) => {
@@ -126,6 +119,8 @@ const createBook = (title, author, pages, read) => {
   newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   displayLibrary();
+
+  addBookToLocalStorage(newBook);
 };
 
 const deleteBook = (e) => {
@@ -134,6 +129,7 @@ const deleteBook = (e) => {
   parentDiv.remove();
   let bookIndex = findBookIndex(bookTitle);
   myLibrary.splice(bookIndex, 1);
+  localStorage.removeItem(bookTitle);
 };
 
 const findBookIndex = (bookTitle) => {
@@ -165,9 +161,35 @@ const clearModal = () => {
   radioNo.checked = "true";
 };
 
-displayLibrary();
+const addBookToLocalStorage = (book) => {
+  if (!localStorage.getItem(book.title)) {
+    localStorage.setItem(book.title, JSON.stringify(book));
+  }
+};
+
+const displayLocalStorage = () => {
+  let key;
+  if (localStorage.length > 0) {
+    for (let i = 0; i < localStorage.length; i++) {
+      key = localStorage.key(i);
+      book = JSON.parse(localStorage.getItem(key));
+      if (book.title) {
+        createBook(book.title, book.author, book.pages, book.read);
+      }
+    }
+    displayLibrary();
+    createAddBookBox();
+  }
+};
 
 // eventlisteners
 addBookButton.addEventListener("click", addBook);
 modalX.addEventListener("click", exitModal);
 submit.addEventListener("click", getFormData);
+
+// main library to display
+let myLibrary = [];
+const theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 295, false);
+myLibrary.push(theHobbit);
+displayLocalStorage();
+displayLibrary();
