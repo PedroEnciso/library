@@ -3,6 +3,12 @@ const bookList = document.getElementById("book-list");
 const addBookModal = document.getElementById("add-book-modal");
 const addBookButton = document.getElementById("add-book");
 const modalX = document.getElementById("modal-x");
+const titleInputBox = document.getElementById("title");
+const authorInputBox = document.getElementById("author");
+const pagesInputBox = document.getElementById("pages");
+const radioYes = document.getElementById("yes");
+const radioNo = document.getElementById("no");
+const submitButton = document.getElementById("submit");
 
 // main library to display
 let myLibrary = [];
@@ -17,33 +23,18 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 myLibrary.push(theHobbit);
 
-const theHobbit2 = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-myLibrary.push(theHobbit2);
-
 const addBook = () => {
   addBookModal.style.visibility = "visible";
 };
 
 const displayLibrary = () => {
+  bookList.innerHTML = "";
   for (let i = 0; i < myLibrary.length; i++) {
     displayBook(myLibrary[i]);
   }
 };
 
 const displayBook = (book) => {
-  /* model for book card
-    <card>
-        <div>
-            <bookTitle>
-            <bookAuthor>
-        </div>
-        <div>
-            <read>
-            <pages>
-        </div>
-    </card>
-*/
-
   // creating html elements
   const card = document.createElement("div");
 
@@ -89,6 +80,30 @@ const displayBook = (book) => {
   bookList.appendChild(card);
 };
 
+const getFormData = (e) => {
+  e.preventDefault();
+  let bookRead = false;
+
+  // check if book has been read
+  if (radioYes.checked === true && radioNo.checked === false) {
+    bookRead = true;
+  }
+
+  createBook(
+    titleInputBox.value,
+    authorInputBox.value,
+    pagesInputBox.value,
+    bookRead
+  );
+  exitModal();
+};
+
+const createBook = (title, author, pages, read) => {
+  newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  displayLibrary();
+};
+
 const exitModal = () => {
   addBookModal.style.visibility = "hidden";
 };
@@ -98,3 +113,4 @@ displayLibrary();
 // eventlisteners
 addBookButton.addEventListener("click", () => addBook());
 modalX.addEventListener("click", () => exitModal());
+submit.addEventListener("click", getFormData);
