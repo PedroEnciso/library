@@ -24,17 +24,23 @@
           <form>
             <div class="input-container">
               <label for="title">Title</label>
-              <input id="title" type="text" />
+              <input id="title" type="text" required />
             </div>
 
             <div class="input-container">
               <label for="author">Author</label>
-              <input id="author" type="text" />
+              <input id="author" type="text" required />
             </div>
 
             <div class="input-container">
               <label for="pages"># of pages</label>
-              <input class="number-input" id="pages" type="number" min="1" />
+              <input
+                class="number-input"
+                id="pages"
+                type="number"
+                min="1"
+                required
+              />
             </div>
 
             <div class="radio-prompt">
