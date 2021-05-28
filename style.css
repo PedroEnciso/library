@@ -62,6 +62,7 @@ main {
 .card {
   min-width: 220px;
   max-width: 350px;
+  min-height: 170px;
   background-color: var(--dark-accent);
   margin-right: 3rem;
   margin-bottom: 3rem;

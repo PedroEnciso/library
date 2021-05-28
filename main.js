@@ -42,6 +42,7 @@ const displayBook = (book) => {
 
   const x = document.createElement("img");
   x.src = "img/x2.svg";
+  x.addEventListener("click", deleteBook);
 
   const container1 = document.createElement("div");
   const bookTitle = document.createElement("h2");
@@ -127,10 +128,25 @@ const createBook = (title, author, pages, read) => {
   displayLibrary();
 };
 
+const deleteBook = (e) => {
+  const bookTitle = e.path[1].childNodes[1].childNodes[0].innerHTML;
+  const parentDiv = e.path[1];
+  parentDiv.remove();
+  let bookIndex = findBookIndex(bookTitle);
+  myLibrary.splice(bookIndex, 1);
+};
+
+const findBookIndex = (bookTitle) => {
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].title === bookTitle) {
+      return i;
+    }
+  }
+};
+
 const checkForm = (title, author, pages) => {
   if (title === "" || author === "" || pages === "") {
     incompleteMessage.style.display = "block";
-    console.log("hi");
     return false;
   }
   return true;
