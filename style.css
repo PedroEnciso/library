@@ -231,6 +231,14 @@ main {
   background-color: var(--light-accent-hover);
 }
 
+.incomplete-message {
+  display: none;
+  color: red;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .add-book-box {
   display: grid;
   place-items: center;

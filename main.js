@@ -9,6 +9,7 @@ const pagesInputBox = document.getElementById("pages");
 const radioYes = document.getElementById("yes");
 const radioNo = document.getElementById("no");
 const submitButton = document.getElementById("submit");
+const incompleteMessage = document.getElementById("incomplete-message");
 
 // main library to display
 let myLibrary = [];
@@ -64,8 +65,8 @@ const displayBook = (book) => {
   bookAuthor.innerHTML = book.author;
   pages.innerHTML = book.pages;
 
-  if (book.read === true) read.innerHTML = "already read";
-  else read.innerHTML = "not read";
+  if (book.read === true) read.innerHTML = "Finished";
+  else read.innerHTML = "Not Read";
 
   // adding elements to their parent node
   container1.appendChild(bookTitle);
@@ -99,20 +100,25 @@ const createAddBookBox = () => {
 
 const getFormData = (e) => {
   e.preventDefault();
-  let bookRead = false;
 
-  // check if book has been read
-  if (radioYes.checked === true && radioNo.checked === false) {
-    bookRead = true;
+  // check if form has been completed
+  if (
+    checkForm(titleInputBox.value, authorInputBox.value, pagesInputBox.value)
+  ) {
+    let bookRead = false;
+    // check if book has been read
+    if (radioYes.checked === true && radioNo.checked === false) {
+      bookRead = true;
+    }
+
+    createBook(
+      titleInputBox.value,
+      authorInputBox.value,
+      pagesInputBox.value,
+      bookRead
+    );
+    exitModal();
   }
-
-  createBook(
-    titleInputBox.value,
-    authorInputBox.value,
-    pagesInputBox.value,
-    bookRead
-  );
-  exitModal();
 };
 
 const createBook = (title, author, pages, read) => {
@@ -121,8 +127,26 @@ const createBook = (title, author, pages, read) => {
   displayLibrary();
 };
 
+const checkForm = (title, author, pages) => {
+  if (title === "" || author === "" || pages === "") {
+    incompleteMessage.style.display = "block";
+    console.log("hi");
+    return false;
+  }
+  return true;
+};
+
 const exitModal = () => {
   addBookModal.style.visibility = "hidden";
+  clearModal();
+};
+
+const clearModal = () => {
+  titleInputBox.value = "";
+  authorInputBox.value = "";
+  pagesInputBox.value = "";
+  incompleteMessage.style.display = "none";
+  radioNo.checked = "true";
 };
 
 displayLibrary();
