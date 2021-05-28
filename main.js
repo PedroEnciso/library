@@ -190,4 +190,3 @@ submit.addEventListener("click", getFormData);
 // main library to display
 let myLibrary = [];
 displayLocalStorage();
-displayLibrary();
