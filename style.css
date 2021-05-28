@@ -60,6 +60,8 @@ main {
 }
 
 .card {
+  min-width: 220px;
+  max-width: 350px;
   background-color: var(--dark-accent);
   margin-right: 3rem;
   margin-bottom: 3rem;
@@ -227,4 +229,16 @@ main {
 
 .submit:hover {
   background-color: var(--light-accent-hover);
+}
+
+.add-book-box {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.plus {
+  font-weight: 800;
+  font-size: 100px;
+  color: var(--light-accent);
 }

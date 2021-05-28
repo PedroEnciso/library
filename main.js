@@ -32,6 +32,7 @@ const displayLibrary = () => {
   for (let i = 0; i < myLibrary.length; i++) {
     displayBook(myLibrary[i]);
   }
+  createAddBookBox();
 };
 
 const displayBook = (book) => {
@@ -80,6 +81,22 @@ const displayBook = (book) => {
   bookList.appendChild(card);
 };
 
+const createAddBookBox = () => {
+  const div = document.createElement("div");
+  const plus = document.createElement("p");
+
+  div.classList.add("card");
+  div.classList.add("add-book-box");
+  div.ariaLabel = "Add a new book";
+  plus.classList.add("plus");
+  plus.innerHTML = "+";
+
+  div.appendChild(plus);
+  bookList.appendChild(div);
+
+  div.addEventListener("click", addBook);
+};
+
 const getFormData = (e) => {
   e.preventDefault();
   let bookRead = false;
@@ -111,6 +128,6 @@ const exitModal = () => {
 displayLibrary();
 
 // eventlisteners
-addBookButton.addEventListener("click", () => addBook());
-modalX.addEventListener("click", () => exitModal());
+addBookButton.addEventListener("click", addBook);
+modalX.addEventListener("click", exitModal);
 submit.addEventListener("click", getFormData);
